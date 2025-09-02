@@ -1,7 +1,6 @@
 <?php
 // Heading
 $_['heading_title']    = 'Google reCAPTCHA v3';
-$_['recaptcha_heading_title'] = 'Google reCAPTCHA v3';
 
 // Text
 $_['text_extension']   = 'Extensions';
