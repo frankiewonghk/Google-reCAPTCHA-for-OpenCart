@@ -1,6 +1,6 @@
 # Google reCAPTCHA v3 Extension for OpenCart
 
-This extension provides Google reCAPTCHA v3 integration for OpenCart 4.1.0.3. Unlike traditional CAPTCHAs, reCAPTCHA v3 runs in the background and provides a score based on user behavior, making it invisible to users while still protecting against bots.
+This extension provides Google reCAPTCHA v3 integration for OpenCart 4. Unlike traditional CAPTCHAs, reCAPTCHA v3 runs in the background and provides a score based on user behavior, making it invisible to users while still protecting against bots.
 
 ## Features
 
@@ -9,9 +9,11 @@ This extension provides Google reCAPTCHA v3 integration for OpenCart 4.1.0.3. Un
 - **Configurable Threshold**: Adjustable score threshold for different security levels
 - **Easy Integration**: Drop-in replacement for existing captcha systems
 
+Tested with OpenCart version: 4.1.0.3. (This extension was developed for my project on OpenCart 4.1.0.3. Please report any issues or confirm compatibility with other versions)
+
 ## Installation
 
-1. Upload the extension files to your OpenCart installation
+1. Upload the extension files to your OpenCart extension folder
 2. Go to Admin → Extensions → Extensions
 3. Filter by "Captcha" type
 4. Find "Google reCAPTCHA v3" and click "Install"
@@ -60,11 +62,12 @@ After installation and configuration, the reCAPTCHA will automatically be used i
 3. A token is generated and sent with the form data
 4. The server validates the token with Google's API
 5. The response includes a score that determines if the submission is allowed
+6. The extension is built based on the structure of the built-in basic Captcha extension, no core files are edited
 
 ### Files Structure
 
 ```
-upload/extension/opencart/
+extension/opencart/
 ├── admin/
 │   ├── controller/captcha/recaptcha.php
 │   ├── language/en-gb/captcha/recaptcha.php
@@ -99,19 +102,4 @@ upload/extension/opencart/
    - Verify the site key is correct
    - Check browser console for any JavaScript errors
 
-### Debug Mode
 
-To enable debug mode, you can temporarily modify the validate method in the catalog controller to log the reCAPTCHA response:
-
-```php
-// Add this before the score check
-$this->log->write('reCAPTCHA Response: ' . print_r($response, true));
-```
-
-## Support
-
-For issues or questions, please refer to the OpenCart community forums or create an issue in the extension repository.
-
-## License
-
-This extension is provided as-is for educational and development purposes.
