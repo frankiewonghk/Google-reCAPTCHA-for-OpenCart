@@ -1,0 +1,53 @@
+<fieldset>
+  <div class="mb-3 required">
+    <div id="recaptcha-container">
+      <!-- reCAPTCHA v3 is invisible and runs in the background -->
+      <div class="recaptcha-info">
+        <small class="text-muted">{{ text_recaptcha_info }}</small>
+      </div>
+    </div>
+    <div id="error-captcha" class="invalid-feedback"></div>
+  </div>
+</fieldset>
+
+<script src="https://www.google.com/recaptcha/api.js?render={{ site_key }}"></script>
+<script>
+// Initialize reCAPTCHA v3
+grecaptcha.ready(function() {
+  // Execute reCAPTCHA when the page loads
+  grecaptcha.execute('{{ site_key }}', {action: 'submit'}).then(function(token) {
+    // Store the token for form submission
+    var hiddenInput = document.getElementById('g-recaptcha-response');
+    if (!hiddenInput) {
+      hiddenInput = document.createElement('input');
+      hiddenInput.type = 'hidden';
+      hiddenInput.name = 'g-recaptcha-response';
+      hiddenInput.id = 'g-recaptcha-response';
+      document.getElementById('recaptcha-container').appendChild(hiddenInput);
+    }
+    hiddenInput.value = token;
+  });
+});
+
+// Re-execute reCAPTCHA before form submission
+document.addEventListener('DOMContentLoaded', function() {
+  // Find all forms that might have captcha validation
+  var forms = document.querySelectorAll('form');
+  forms.forEach(function(form) {
+    form.addEventListener('submit', function(e) {
+      // Re-execute reCAPTCHA before form submission
+      grecaptcha.execute('{{ site_key }}', {action: 'submit'}).then(function(token) {
+        var hiddenInput = document.getElementById('g-recaptcha-response');
+        if (!hiddenInput) {
+          hiddenInput = document.createElement('input');
+          hiddenInput.type = 'hidden';
+          hiddenInput.name = 'g-recaptcha-response';
+          hiddenInput.id = 'g-recaptcha-response';
+          form.appendChild(hiddenInput);
+        }
+        hiddenInput.value = token;
+      });
+    });
+  });
+});
+</script>
