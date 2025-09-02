@@ -1,6 +1,6 @@
 # Google reCAPTCHA v3 Extension for OpenCart
 
-OpenCart 4.x no longer ships with Google reCAPTCHA as a core module, this extension provides Google reCAPTCHA v3 integration for OpenCart 4. Unlike traditional CAPTCHAs, reCAPTCHA v3 runs in the background and provides a score based on user behavior, making it invisible to users while still protecting against bots.
+OpenCart 4 no longer ships with Google reCAPTCHA as a core module. This extension provides Google reCAPTCHA v3 integration for OpenCart 4. Unlike traditional CAPTCHAs, reCAPTCHA v3 runs in the background and provides a score based on user behavior, making it invisible to users while still protecting against bots.
 
 ## Features
 
